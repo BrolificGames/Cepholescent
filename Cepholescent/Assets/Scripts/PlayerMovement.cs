@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void FixedUpdate() 
 	{
-		CheckIfGrounded();
+		if(CheckIfGrounded()) return;
 
 		float move = Input.GetAxis("Horizontal");
 		rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
@@ -39,12 +39,13 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
-	private void CheckIfGrounded()
+	private bool CheckIfGrounded()
 	{
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayerMask);
 		animator.SetBool("Ground", grounded);
 
 		animator.SetFloat("VerticalSpeed", rigidbody2D.velocity.y);
+		return !grounded;
 	}
 
 	private void Flip()
