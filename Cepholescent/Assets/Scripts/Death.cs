@@ -2,15 +2,19 @@
 using System.Collections;
 
 public class Death : MonoBehaviour {
-	
-	void Start() 
-	{
 
+	void OnCollisionEnter2D(Collision2D collisionObject)
+	{
+		if (collisionObject.gameObject.tag == "Player")
+		{
+			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().enabled = false;
+			ReloadGame();
+		}
 	}
-	
 
-	void Update() 
+	private IEnumerator ReloadGame()
 	{
-
+		yield return new WaitForSeconds(2);
+		Application.LoadLevel(Application.loadedLevel);
 	}
 }
