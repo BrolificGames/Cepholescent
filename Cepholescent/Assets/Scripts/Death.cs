@@ -14,7 +14,7 @@ public class Death : MonoBehaviour {
 
 	private IEnumerator ReloadGame()
 	{	
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(4);
 		Application.LoadLevel(Application.loadedLevel);
 	}
 }
