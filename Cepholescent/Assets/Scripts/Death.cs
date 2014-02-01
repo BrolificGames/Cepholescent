@@ -3,9 +3,9 @@ using System.Collections;
 
 public class Death : MonoBehaviour {
 
-	void OnCollisionEnter2D(Collision2D collisionObject)
-	{
-		if (collisionObject.gameObject.tag == "Player")
+
+	void OnTriggerEnter2D(Collider2D collision) {
+		if (collision.gameObject.tag == "Player")
 		{
 			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().enabled = false;
 			ReloadGame();
@@ -13,7 +13,8 @@ public class Death : MonoBehaviour {
 	}
 
 	private IEnumerator ReloadGame()
-	{
+	{	
+		Debug.Log ("reloading");
 		yield return new WaitForSeconds(2);
 		Application.LoadLevel(Application.loadedLevel);
 	}
