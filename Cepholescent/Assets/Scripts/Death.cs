@@ -8,13 +8,12 @@ public class Death : MonoBehaviour {
 		if (collision.gameObject.tag == "Player")
 		{
 			GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraFollow>().enabled = false;
-			ReloadGame();
+			StartCoroutine(ReloadGame());
 		}
 	}
 
 	private IEnumerator ReloadGame()
 	{	
-		Debug.Log ("reloading");
 		yield return new WaitForSeconds(2);
 		Application.LoadLevel(Application.loadedLevel);
 	}
