@@ -33,7 +33,7 @@ public class SceneFadeInOut : MonoBehaviour
 	{
 		FadeToClear();
 
-		if (guiText.color.a <= 0.5f)
+		if (guiTexture.color.a <= 0.5f)
 		{
 			guiTexture.color = Color.clear;
 			guiTexture.enabled = false;
