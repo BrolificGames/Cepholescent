@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Death : MonoBehaviour {
-
+public class Death : MonoBehaviour 
+{
+	public GameObject Fader;
 
 	void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.gameObject.tag == "Player")
@@ -15,6 +16,6 @@ public class Death : MonoBehaviour {
 	private IEnumerator ReloadGame()
 	{	
 		yield return new WaitForSeconds(4);
-		Application.LoadLevel(Application.loadedLevel);
+		Fader.GetComponent<SceneFadeInOut>().EndScene();
 	}
 }
