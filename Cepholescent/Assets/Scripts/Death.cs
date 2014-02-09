@@ -16,6 +16,6 @@ public class Death : MonoBehaviour
 	private IEnumerator ReloadGame()
 	{	
 		yield return new WaitForSeconds(4);
-		Fader.GetComponent<SceneFadeInOut>().EndScene();
+		Fader.GetComponent<SceneFadeInOut>().sceneEnding = true;
 	}
 }

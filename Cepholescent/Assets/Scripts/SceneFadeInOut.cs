@@ -5,6 +5,7 @@ public class SceneFadeInOut : MonoBehaviour
 {
 	public float fadeSpeed = 1.5f;
 	private bool sceneStarting = true;
+	public bool sceneEnding = false;
 
 	void Awake()
 	{
@@ -17,6 +18,11 @@ public class SceneFadeInOut : MonoBehaviour
 		{
 			StartScene();
 		}
+
+		if (sceneEnding)
+		{
+			EndScene();
+		}
 	}
 
 	private void FadeToClear()
@@ -26,15 +32,16 @@ public class SceneFadeInOut : MonoBehaviour
 
 	private void FadeToBlack()
 	{
-		guiTexture.color = Color.Lerp(Color.clear, Color.black, fadeSpeed * Time.deltaTime);
+		guiTexture.color = Color.Lerp(guiTexture.color, Color.black, fadeSpeed * Time.deltaTime);
 	}
 
 	private void StartScene()
 	{
+		Debug.Log (guiTexture.enabled);
 		FadeToClear();
 
 		if (guiTexture.color.a <= 0.5f)
-		{
+		{	
 			guiTexture.color = Color.clear;
 			guiTexture.enabled = false;
 			sceneStarting = false;
@@ -45,9 +52,10 @@ public class SceneFadeInOut : MonoBehaviour
 	{
 		guiTexture.enabled = true;
 		FadeToBlack();
-
+		
 		if (guiTexture.color.a >= 0.95f)
 		{
+			sceneEnding = false;
 			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
