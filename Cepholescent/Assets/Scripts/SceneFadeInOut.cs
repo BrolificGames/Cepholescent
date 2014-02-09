@@ -37,10 +37,9 @@ public class SceneFadeInOut : MonoBehaviour
 
 	private void StartScene()
 	{
-		Debug.Log (guiTexture.enabled);
 		FadeToClear();
 
-		if (guiTexture.color.a <= 0.5f)
+		if (guiTexture.color.a <= 0.2f)
 		{	
 			guiTexture.color = Color.clear;
 			guiTexture.enabled = false;
