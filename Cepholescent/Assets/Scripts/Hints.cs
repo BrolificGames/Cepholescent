@@ -28,7 +28,7 @@ public class Hints : MonoBehaviour {
 
 	private void openDialog()
 	{
-		Debug.Log ("open dialog);
+		Debug.Log ("open dialog");
 	}
 
 	private void closeDialog()
