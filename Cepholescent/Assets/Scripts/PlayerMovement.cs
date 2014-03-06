@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
 
 	void FixedUpdate() 
 	{
-		if(CheckIfGrounded()) return;
+		CheckIfGrounded();
 
 		float move = Input.GetAxis("Horizontal");
 		rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
