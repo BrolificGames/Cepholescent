@@ -4,6 +4,13 @@ using System.Collections;
 public class Hints : MonoBehaviour {
 	public bool shown = false;
 	private bool _keyPressed = false;
+	public string hintText;
+	public GUIText hint;
+
+	void Start()
+	{
+		hint.text = "";
+	}
 
 	void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.gameObject.tag == "Player" && shown == false)
@@ -30,11 +37,11 @@ public class Hints : MonoBehaviour {
 
 	private void openDialog()
 	{
-		Debug.Log ("open dialog");
+		hint.text = hintText;
 	}
 
 	private void closeDialog()
 	{
-		Debug.Log ("hide hint");
+		hint.text = "";
 	}
 }
