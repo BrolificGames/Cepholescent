@@ -8,7 +8,6 @@ public class Hints : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.gameObject.tag == "Player" && shown == false)
 		{
-			Debug.Log ("showing hint");
 			shown = true;
 			StartCoroutine(showHint());
 		}
