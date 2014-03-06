@@ -17,7 +17,7 @@ public class Hints : MonoBehaviour {
 	{
 		openDialog();
 
-		while (!Input.GetKeyUp("space"))
+		while (!Input.GetKeyUp("return"))
 		{
 			yield return null;
 		}
