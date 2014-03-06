@@ -19,10 +19,13 @@ public class Hints : MonoBehaviour {
 
 		while (!Input.GetKeyUp("return"))
 		{
+			Time.timeScale = 0f;
 			yield return null;
 		}
 
+		Time.timeScale = 1f;
 		closeDialog();
+		yield return null;
 	}
 
 	private void openDialog()
