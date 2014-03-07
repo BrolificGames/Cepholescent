@@ -39,13 +39,15 @@ public class PlayerMovement : MonoBehaviour
 		}
 	}
 
-	private bool CheckIfGrounded()
+	private void CheckIfGrounded()
 	{
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayerMask);
+		// wall - touching wall
+
+		// set bool to wall (grab wall)
 		animator.SetBool("Ground", grounded);
 
 		animator.SetFloat("VerticalSpeed", rigidbody2D.velocity.y);
-		return !grounded;
 	}
 
 	private void Flip()
