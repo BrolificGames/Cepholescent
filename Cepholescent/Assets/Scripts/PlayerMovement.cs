@@ -26,8 +26,8 @@ public class PlayerMovement : MonoBehaviour
 		rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
 		animator.SetFloat("Speed", Mathf.Abs(move));
 
-		if (move > 0 && !facingRight) Flip ();
-		else if (move < 0 && facingRight) Flip ();
+		if (move > 0 && !facingRight) Flip();
+		else if (move < 0 && facingRight) Flip();
 	}
 
 	void Update()
