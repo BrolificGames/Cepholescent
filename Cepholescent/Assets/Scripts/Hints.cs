@@ -3,9 +3,11 @@ using System.Collections;
 
 public class Hints : MonoBehaviour {
 	public bool shown = false;
-	private bool _keyPressed = false;
 	public string hintText;
 	public GUIText hint;
+	public bool suspend;
+
+	private bool _keyPressed = false;
 
 	void Start()
 	{
@@ -24,10 +26,15 @@ public class Hints : MonoBehaviour {
 	{
 		openDialog();
 
-		while (!Input.GetKeyUp("return"))
-		{
-			Time.timeScale = 0f;
-			yield return null;
+		if (suspend) {
+			while (!Input.GetKeyUp("return"))
+			{
+				Time.timeScale = 0f;
+				yield return null;
+			}
+		}
+		else {
+			yield return new WaitForSeconds(4);
 		}
 
 		Time.timeScale = 1f;
