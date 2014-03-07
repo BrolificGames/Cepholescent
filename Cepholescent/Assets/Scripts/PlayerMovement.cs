@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 	public float maxSpeed = 10f;
 	public Transform groundCheck;
 	public LayerMask groundLayerMask;
+	public LayerMask wallLayerMask;
 	public float jumpForce = 30f;
 
 	private bool facingRight = true;
@@ -41,10 +42,10 @@ public class PlayerMovement : MonoBehaviour
 
 	private void CheckIfGrounded()
 	{
-		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayerMask);
-		// wall - touching wall
+		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayerMask) || 
+			Physics2D.OverlapCircle(groundCheck.position, groundRadius, wallLayerMask);
 
-		// set bool to wall (grab wall)
+		Debug.Log(grounded);
 		animator.SetBool("Ground", grounded);
 
 		animator.SetFloat("VerticalSpeed", rigidbody2D.velocity.y);
