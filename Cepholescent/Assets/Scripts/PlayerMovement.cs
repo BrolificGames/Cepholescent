@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 	private float groundRadius = 0.2f;
 	private Animator animator;
 	private float nextAttack;
+	private bool sliding = false;
 
 	void Start() 
 	{
@@ -23,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 	void FixedUpdate() 
 	{
 		CheckIfGrounded();
-
+		
 		float move = Input.GetAxis("Horizontal");
 		rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
 		animator.SetFloat("Speed", Mathf.Abs(move));
@@ -34,10 +35,18 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetButton("Fire2") && Time.time > nextAttack)
+		sliding = Input.GetButton("Fire2");
+
+		if (sliding)
 		{
 			SlideAttack();
 		}
+
+		else
+		{
+			animator.SetBool("Attack", false);
+		}
+
 
 		if (grounded && (Input.GetAxis("Jump") > 0))
 		{
@@ -66,6 +75,6 @@ public class PlayerMovement : MonoBehaviour
 
 	private void SlideAttack()
 	{
-		nextAttack = nextAttack + Time.time;
+		animator.SetBool("Attack", true);
 	}
 }
