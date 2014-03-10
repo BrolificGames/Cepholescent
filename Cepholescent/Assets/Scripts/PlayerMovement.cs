@@ -45,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayerMask) || 
 			Physics2D.OverlapCircle(groundCheck.position, groundRadius, wallLayerMask);
 
-		Debug.Log(grounded);
 		animator.SetBool("Ground", grounded);
 
 		animator.SetFloat("VerticalSpeed", rigidbody2D.velocity.y);
