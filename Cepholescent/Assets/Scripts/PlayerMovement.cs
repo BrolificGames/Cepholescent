@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 	private bool grounded = false;
 	private float groundRadius = 0.2f;
 	private Animator animator;
+	private float nextAttack;
 
 	void Start() 
 	{
@@ -33,6 +34,11 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update()
 	{
+		if (Input.GetButton("Fire2") && Time.time > nextAttack)
+		{
+			SlideAttack();
+		}
+
 		if (grounded && (Input.GetAxis("Jump") > 0))
 		{
 			animator.SetBool("Ground", false);
@@ -56,5 +62,10 @@ public class PlayerMovement : MonoBehaviour
 		Vector3 updatedPlayerScale = transform.localScale;
 		updatedPlayerScale.x *= -1;
 		transform.localScale = updatedPlayerScale;
+	}
+
+	private void SlideAttack()
+	{
+		nextAttack = nextAttack + Time.time;
 	}
 }
