@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 	public LayerMask groundLayerMask;
 	public LayerMask wallLayerMask;
 	public float jumpForce = 30f;
+	public float drag = 0.5f;
+	
 
 	private bool facingRight = true;
 	private bool grounded = false;
@@ -45,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
 		else
 		{
 			animator.SetBool("Attack", false);
+			rigidbody2D.drag = 0f;
 		}
 
 
@@ -76,5 +79,7 @@ public class PlayerMovement : MonoBehaviour
 	private void SlideAttack()
 	{
 		animator.SetBool("Attack", true);
+		rigidbody2D.drag += drag * Time.deltaTime;
+		Debug.Log(rigidbody2D.drag);
 	}
 }
