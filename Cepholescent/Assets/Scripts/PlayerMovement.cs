@@ -79,7 +79,9 @@ public class PlayerMovement : MonoBehaviour
 	private void SlideAttack()
 	{
 		animator.SetBool("Attack", true);
-		rigidbody2D.drag += drag * Time.deltaTime;
-		Debug.Log(rigidbody2D.drag);
+		if (rigidbody2D.drag < 60) 
+		{
+			rigidbody2D.drag += drag * Time.deltaTime;
+		}
 	}
 }
