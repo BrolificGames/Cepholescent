@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
 	private Animator animator;
 	private float nextAttack;
 	private bool sliding = false;
-	private bool isCreated = false;
 	private GameObject bubblesObject;
 
 	void Start() 
@@ -46,16 +45,6 @@ public class PlayerMovement : MonoBehaviour
 		{
 			SlideAttack();
 		}
-
-//		if (Input.GetButtonUp("Fire2"))
-//	    {
-//			bubblesObject = GameObject.FindGameObjectWithTag("Bubbles");
-//			if (bubblesObject.gameObject)
-//			{
-//				Destroy(bubblesObject);
-//				isCreated = false;
-//			}
-//		}
 
 		else
 		{
@@ -91,11 +80,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private void SlideAttack()
 	{
-		if (!isCreated)
-		{
-			Instantiate(bubbles, bubbleSpawn.position, bubbleSpawn.rotation);
-			isCreated = true;
-		}
+		Instantiate(bubbles, bubbleSpawn.position, bubbleSpawn.rotation);
 
 		animator.SetBool("Attack", true);
 		if (rigidbody2D.drag < 60) 

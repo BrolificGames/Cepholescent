@@ -3,6 +3,8 @@ using System.Collections;
 
 public class BubblesFollow : MonoBehaviour 
 {
+	public float lifetime;
+
 	private float positionX;
 	private float positionY;
 	private Transform player;
@@ -10,6 +12,7 @@ public class BubblesFollow : MonoBehaviour
 	void Start()
 	{
 		player = GameObject.FindGameObjectWithTag("Player").transform.Find("BubbleSpawn");
+		Destroy (gameObject, lifetime);
 	}
 	
 	void FixedUpdate()
