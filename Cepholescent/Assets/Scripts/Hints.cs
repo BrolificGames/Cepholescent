@@ -7,8 +7,6 @@ public class Hints : MonoBehaviour {
 	public GUIText hint;
 	public bool suspend;
 
-	private bool _keyPressed = false;
-
 	void Start()
 	{
 		hint.text = "";
