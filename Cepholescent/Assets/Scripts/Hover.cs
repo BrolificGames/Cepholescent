@@ -4,6 +4,7 @@ using System.Collections;
 public class Hover : MonoBehaviour 
 {
 	public float floatSpeed = 2.0f;
+	public float offset = 2.0f;
 
 	private Vector3 pointA;
 	private Vector3 pointB;
@@ -11,7 +12,7 @@ public class Hover : MonoBehaviour
 	IEnumerator Start()
 	{
 		pointA = transform.position;
-		pointB = new Vector3(pointA.x, pointA.y + 0.2f);
+		pointB = new Vector3(pointA.x, pointA.y + offset);
 
 		while (true)
 		{
